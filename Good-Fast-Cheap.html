@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        font-family: sans-serif;
+        margin: 0px;
+        transition: all 0.7s;
+        box-sizing: border-box;
+      }
+      .text {
+        font-size: 32px;
+        font-weight: bold;
+      }
+      .main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+      .label {
+        height: 44px;
+        width: 100px;
+        display: flex;
+        background-color: rgba(0, 0, 0, 0.3);
+        border-radius: 50px;
+        position: relative;
+        cursor: pointer;
+        margin-right: 20px;
+      }
+      .ball {
+        width: 40px;
+        height: 40px;
+        background-color: white;
+        border-radius: 50%;
+        position: absolute;
+        top: 2px;
+        left: 2px;
+      }
+      .checkbox {
+        visibility: hidden;
+      }
+      .switch {
+        display: flex;
+        align-items: center;
+      }
+      .ngon {
+        margin-left: 18px;
+      }
+      .ngon,
+      .bo,
+      .re {
+        margin-top: 30px;
+      }
+      .slide {
+        background-color: purple;
+      }
+      .ballSlide {
+        margin-left: 56px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="text">Bạn muốn mua sản phẩm như thế nào?</div>
+      <div class="ngon">
+        <div class="switch">
+          <input type="checkbox" id="checkbox1" class="checkbox" />
+          <label for="checkbox1" class="label"><div class="ball"></div> </label>
+          <div class="text2">Ngon</div>
+        </div>
+      </div>
+      <div class="bo">
+        <div class="switch">
+          <input type="checkbox" id="checkbox2" class="checkbox" />
+          <label for="checkbox2" class="label"><div class="ball"></div> </label>
+          <div class="text2">Bổ</div>
+        </div>
+      </div>
+      <div class="re">
+        <div class="switch">
+          <input type="checkbox" id="checkbox3" class="checkbox" />
+          <label for="checkbox3" class="label"><div class="ball"></div> </label>
+          <div class="text2">Rẻ</div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const ballEl = [...document.querySelectorAll(".ball")];
+      const labelEl = [...document.querySelectorAll(".label")];
+      const checkboxEl = [...document.querySelectorAll(".checkbox")];
+      let max = checkboxEl.length;
+      for (let i = 0; i < max; i++) {
+        checkboxEl[i].addEventListener("click", () => {
+          ballEl[i].classList.toggle("ballSlide");
+          labelEl[i].classList.toggle("slide");
+          onclicks(checkboxEl[i]);
+        });
+      }
+
+      function onclicks(current) {
+        if (
+          checkboxEl.some((item) => {
+            return !item.checked;
+          })
+        )
+          return;
+        for (let i = 0; i < max; i++) {
+          if (checkboxEl[i] === current) {
+            let change = (i + max - 1) % max;
+            checkboxEl[change].checked = false;
+            ballEl[change].classList.remove("ballSlide");
+            labelEl[change].classList.remove("slide");
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

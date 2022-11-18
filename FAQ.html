@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      * {
+        font-family: sans-serif;
+        margin: 0px;
+        box-sizing: border-box;
+        overflow: hidden;
+        transition: all 0.3s;
+      }
+      body {
+        background-color: rgba(0, 0, 0, 0.07);
+      }
+      .heading {
+        font-weight: 600;
+        font-size: 36px;
+      }
+      .faq1 {
+        border: 1px solid black;
+        border-radius: 10px;
+        width: 650px;
+        height: 90px;
+        margin-top: 30px;
+        display: flex;
+        position: relative;
+      }
+      .main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+      }
+      .question,
+      .answer {
+        font-size: 28px;
+      }
+      .button {
+        border: none;
+        height: 90px;
+        scale: 2;
+        cursor: pointer;
+        position: absolute;
+        right: 40px;
+        background-color: rgba(0, 0, 0, 0.007);
+      }
+      .question {
+        padding-top: 30px;
+        padding-left: 20px;
+      }
+      .answer {
+        padding-left: 20px;
+        margin-top: 50px;
+        font-style: italic;
+      }
+      .expand {
+        height: 180px;
+        background-image: url(/qna.jpg);
+        backdrop-filter: blur(10px);
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+      }
+      .fa-circle-xmark {
+        scale: 1.5;
+        margin-top: 10px;
+        color: rgba(0, 0, 0, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="heading">World Cup 2022 QnA</div>
+      <div class="faqContainer">
+        <div class="faq1">
+          <div class="content">
+            <div class="question">World Cup 2022 được tổ chức ở đâu?</div>
+            <div class="answer">Qatar</div>
+          </div>
+          <button class="button">
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+        </div>
+        <div class="faq1">
+          <div class="content">
+            <div class="question">Linh vật World Cup 2022 là gì?</div>
+            <div class="answer">La'eeb</div>
+          </div>
+          <button class="button">
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+        </div>
+        <div class="faq1">
+          <div class="content">
+            <div class="question">Tổng kinh phí cho WC 2022 là bao nhiêu?</div>
+            <div class="answer">Ước tính hơn 220 tỷ Đô</div>
+          </div>
+          <button class="button">
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+        </div>
+        <div class="faq1">
+          <div class="content">
+            <div class="question">Bài hát chủ đề của WC 2022?</div>
+            <div class="answer">Light of the Sky</div>
+          </div>
+          <button class="button">
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+        </div>
+        <div class="faq1">
+          <div class="content">
+            <div class="question">Thời gian diễn ra sự kiện?</div>
+            <div class="answer">20/11 - 18/12</div>
+          </div>
+          <button class="button">
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <script>
+      const btnEl = [...document.querySelectorAll(".button")];
+      const faq1El = [...document.querySelectorAll(".faq1")];
+      const iEl = document.getElementsByTagName("i");
+      const max = btnEl.length;
+      console.log(iEl);
+      for (let i = 0; i < max; i++) {
+        btnEl[i].addEventListener("click", () => {
+          faq1El[i].classList.toggle("expand");
+          iEl[i].classList.toggle("fa-chevron-down");
+          iEl[i].classList.toggle("fa-circle-xmark");
+        });
+      }
+    </script>
+  </body>
+</html>
